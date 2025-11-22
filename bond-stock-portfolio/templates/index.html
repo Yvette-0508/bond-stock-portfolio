@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Dashboard - Multi-Account Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Left Sidebar: Accounts -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Accounts</h2>
+                <div class="period-selector-compact">
+                    <select id="periodSelect" class="period-dropdown">
+                        <option value="1D">1 Day</option>
+                        <option value="1W">1 Week</option>
+                        <option value="1M" selected>1 Month</option>
+                        <option value="3M">3 Months</option>
+                        <option value="1Y">1 Year</option>
+                        <option value="all">All Time</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="accounts-list" id="accountsList">
+                <!-- Account cards will be inserted here -->
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="last-update">
+                    Last updated: <span id="lastUpdate">--:--:--</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content: Metrics Panels -->
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Portfolio Performance</h1>
+                <p class="subtitle">Multi-account comparison and analytics</p>
+            </header>
+
+            <div class="metrics-grid">
+                <!-- PnL Chart -->
+                <div class="metric-panel">
+                    <div class="panel-header">
+                        <h3>Profit & Loss (%)</h3>
+                    </div>
+                    <div class="panel-body">
+                        <canvas id="pnlChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Equity Chart -->
+                <div class="metric-panel">
+                    <div class="panel-header">
+                        <h3>Portfolio Value ($)</h3>
+                    </div>
+                    <div class="panel-body">
+                        <canvas id="equityChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Volatility Chart -->
+                <div class="metric-panel">
+                    <div class="panel-header">
+                        <h3>Volatility (Annualized %)</h3>
+                    </div>
+                    <div class="panel-body">
+                        <canvas id="volatilityChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Sharpe Ratio Chart -->
+                <div class="metric-panel">
+                    <div class="panel-header">
+                        <h3>Sharpe Ratio</h3>
+                    </div>
+                    <div class="panel-body">
+                        <canvas id="sharpeChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Max Drawdown Chart -->
+                <div class="metric-panel">
+                    <div class="panel-header">
+                        <h3>Maximum Drawdown (%)</h3>
+                    </div>
+                    <div class="panel-body">
+                        <canvas id="drawdownChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Daily PnL Chart -->
+                <div class="metric-panel">
+                    <div class="panel-header">
+                        <h3>Cumulative PnL ($)</h3>
+                    </div>
+                    <div class="panel-body">
+                        <canvas id="pnlDollarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
