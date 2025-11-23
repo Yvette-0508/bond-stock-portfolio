@@ -1,0 +1,53 @@
+.section-header {
+    padding: 0 2.5rem 1rem;
+    margin-top: 1rem;
+}
+
+.section-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.table-container {
+    padding: 0;
+    overflow-x: auto;
+}
+
+.movers-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.movers-table th {
+    text-align: left;
+    padding: 1rem 1.5rem;
+    background: #f8fafc;
+    color: #64748b;
+    font-weight: 600;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.movers-table td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    color: #1e293b;
+}
+
+.movers-table tr:last-child td {
+    border-bottom: none;
+}
+
+.text-green { color: #10b981; font-weight: 600; }
+.text-red { color: #ef4444; font-weight: 600; }
+
+.wide-panel {
+    grid-column: span 2;
+}
+
+@media (max-width: 1200px) {
+    .wide-panel {
+        grid-column: span 1;
+    }
+}
