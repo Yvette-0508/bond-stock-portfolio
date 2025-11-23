@@ -1,0 +1,6 @@
+.venv/
+portfolio_config.yaml
+*.pyc
+__pycache__/
+.DS_Store
+.env

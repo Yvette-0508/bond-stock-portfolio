@@ -1,0 +1,358 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-account-1: #3b82f6;
+    --color-account-2: #10b981;
+    --color-account-3: #f59e0b;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-tertiary: #f1f5f9;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --border-color: #e2e8f0;
+    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 320px;
+    background-color: var(--bg-secondary);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    padding: 1.5rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    background: var(--bg-secondary);
+    z-index: 10;
+}
+
+.sidebar-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.period-selector-compact {
+    width: 100%;
+}
+
+.period-dropdown {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.period-dropdown:hover {
+    border-color: var(--color-account-1);
+}
+
+.accounts-list {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.account-card {
+    background: var(--bg-tertiary);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--color-account-1);
+    transition: all 0.2s;
+}
+
+.account-card:hover {
+    background: #e2e8f0;
+    transform: translateX(4px);
+}
+
+.account-card.account-0 { border-left-color: var(--color-account-1); }
+.account-card.account-1 { border-left-color: var(--color-account-2); }
+.account-card.account-2 { border-left-color: var(--color-account-3); }
+
+.account-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.account-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.account-card.account-0 .account-indicator { background: var(--color-account-1); }
+.account-card.account-1 .account-indicator { background: var(--color-account-2); }
+.account-card.account-2 .account-indicator { background: var(--color-account-3); }
+
+.equity-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.change {
+    font-size: 0.875rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+}
+
+.change.positive {
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.change.negative {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.account-metrics {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.metric-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.metric-value {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.sidebar-footer {
+    padding: 1rem 1.25rem;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+}
+
+.last-update {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+    background: var(--bg-primary);
+}
+
+.content-header {
+    padding: 1.5rem 2.5rem;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content-header h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: var(--text-primary);
+}
+
+.period-controls {
+    display: flex;
+    gap: 0.5rem;
+    background: #e2e8f0;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+}
+
+.period-btn {
+    padding: 0.375rem 1rem;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 0.375rem;
+    transition: all 0.2s;
+}
+
+.period-btn:hover {
+    background: #ffffff;
+    color: var(--text-primary);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.period-btn.active {
+    background: #ffffff;
+    color: var(--color-account-1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem 2.5rem 2.5rem;
+}
+
+.metric-panel {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    transition: border-color 0.2s;
+}
+
+.metric-panel:hover {
+    border-color: var(--color-account-1);
+}
+
+.panel-header {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-tertiary);
+}
+
+.panel-header h3 {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.panel-body {
+    padding: 1.5rem;
+    min-height: 260px;
+}
+
+.panel-body canvas {
+    max-height: 220px;
+}
+
+.loading {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-secondary);
+}
+
+.error {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f8fafc;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+@media (max-width: 1200px) {
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        max-height: 40vh;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .content-header {
+        padding: 1.5rem 1rem;
+    }
+
+    .content-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .metrics-grid {
+        padding: 1rem;
+        grid-template-columns: 1fr;
+    }
+
+    .metric-panel {
+        min-width: unset;
+    }
+}

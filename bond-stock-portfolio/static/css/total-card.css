@@ -1,0 +1,29 @@
+.account-card.total-portfolio {
+    background: #f8fafc;
+    border-left: 4px solid #1e293b;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.account-name.total-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e293b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.account-card.market-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #64748b;
+    margin-top: 1rem;
+    opacity: 0.9;
+}
+
+.account-name.market-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #64748b;
+}

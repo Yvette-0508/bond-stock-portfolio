@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Dashboard - Multi-Account Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/total-card.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/risk.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/benchmark.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Accounts</h2>
+            </div>
+            
+            <div class="accounts-list" id="accountsList"></div>
+            
+            <div class="sidebar-footer">
+                <div class="last-update">
+                    Last updated: <span id="lastUpdate">--:--:--</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <div class="header-title">
+                    <h1>Portfolio Performance</h1>
+                    <p class="subtitle">Multi-account comparison and analytics</p>
+                </div>
+                <div class="period-controls">
+                    <button class="period-btn" data-period="1D">1D</button>
+                    <button class="period-btn" data-period="1W">1W</button>
+                    <button class="period-btn active" data-period="1M">1M</button>
+                    <button class="period-btn" data-period="3M">3M</button>
+                    <button class="period-btn" data-period="1Y">1Y</button>
+                    <button class="period-btn" data-period="all">All</button>
+                </div>
+            </header>
+
+            <div class="metrics-grid">
+                <div class="metric-panel">
+                    <div class="panel-header">
+                        <h3>Profit & Loss (%)</h3>
+                        <div class="benchmark-select-container">
+                            <select class="benchmark-select" onchange="updateBenchmark(this.value)">
+                                <option value="SPY" selected>S&P 500 (SPY)</option>
+                                <option value="QQQ">NASDAQ (QQQ)</option>
+                                <option value="IWM">Russell 2000 (IWM)</option>
+                                <option value="DIA">Dow Jones (DIA)</option>
+                                <option value="None">No Benchmark</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <canvas id="pnlChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="metric-panel">
+                    <div class="panel-header">
+                        <h3>Portfolio Value ($)</h3>
+                    </div>
+                    <div class="panel-body">
+                        <canvas id="equityChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="metric-panel">
+                    <div class="panel-header">
+                        <h3>Volatility (Annualized %)</h3>
+                    </div>
+                    <div class="panel-body">
+                        <canvas id="volatilityChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="metric-panel">
+                    <div class="panel-header">
+                        <h3>Sharpe Ratio</h3>
+                    </div>
+                    <div class="panel-body">
+                        <canvas id="sharpeChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="metric-panel">
+                    <div class="panel-header">
+                        <h3>Maximum Drawdown (%)</h3>
+                    </div>
+                    <div class="panel-body">
+                        <canvas id="drawdownChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="metric-panel">
+                    <div class="panel-header">
+                        <h3>Cumulative PnL ($)</h3>
+                    </div>
+                    <div class="panel-body">
+                        <canvas id="pnlDollarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Risk & Exposure</h2>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-panel">
+                    <div class="panel-header">
+                        <h3>Asset Allocation</h3>
+                    </div>
+                    <div class="panel-body">
+                        <canvas id="allocationChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
